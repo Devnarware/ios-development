@@ -20,15 +20,8 @@
 
 /* Begin PBXFileReference section */
 		2C0C96722FE8453700731B1B /* ios-development */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ios-development"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C0C967D2FE8456E00731B1B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		2C0C96742FE8453700731B1B /* ios-development */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "ios-development";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2C0C966F2FE8453700731B1B /* Frameworks */ = {
@@ -44,7 +37,7 @@
 		2C0C96692FE8453600731B1B = {
 			isa = PBXGroup;
 			children = (
-				2C0C96742FE8453700731B1B /* ios-development */,
+				2C0C967C2FE8455800731B1B /* swiftBasics */,
 				2C0C96732FE8453700731B1B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +48,14 @@
 				2C0C96722FE8453700731B1B /* ios-development */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2C0C967C2FE8455800731B1B /* swiftBasics */ = {
+			isa = PBXGroup;
+			children = (
+				2C0C967D2FE8456E00731B1B /* main.swift */,
+			);
+			path = swiftBasics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +72,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				2C0C96742FE8453700731B1B /* ios-development */,
 			);
 			name = "ios-development";
 			packageProductDependencies = (
