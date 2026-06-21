@@ -20,3 +20,45 @@ var myName: String = "Dev" // specify the type
 
 print("Hello my name is:", myName)
 print("hello \(myName) is here") // just like the just like the `${}` in js
+
+
+// ---------------------------------------------------------------------------------------------------------
+
+
+/*
+ Dfferent types of Datatypes
+ 
+ 1. Srting
+ 2. Boolean
+ 3. Int
+ 4. Double - used in mathamatical calculation
+ 5. Float - used in the unit defining
+ 
+ */
+
+
+// ---------------------------------------------------------------------------------------------------------
+
+
+// Arrays in swift
+
+// Are are not of fixed length in the swift as java and go, it act more like arraylist
+// how to declare array - 2 types
+
+var arr = [1,2,3,4,5]
+var arr2: [Int] = [1,2,3,4,5]
+var arr3: [Int]
+
+arr3 = [1,2,3,4,5]
+
+// operations on array
+
+arr.append(6) // add the element in the last
+arr.insert(0, at: 0) // add the element anywhere
+arr.remove(at: 0) // remove at any specific index
+arr.removeLast()  // remove the last element
+arr.removeAll() // remove all
+
+
+// ---------------------------------------------------------------------------------------------------------
+
