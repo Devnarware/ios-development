@@ -62,3 +62,30 @@ arr.removeAll() // remove all
 
 // ---------------------------------------------------------------------------------------------------------
 
+
+// Sets
+
+// Dictionary - just the hashMaps
+
+
+// ---------------------------------------------------------------------------------------------------------
+
+// function
+
+func addTwoNumber(num: Int,to num2: Int) -> Int{
+    return num + num2
+}
+
+func add(num: Int, num2: Int) -> Int{
+    return num + num2
+}
+
+
+func addThree(num: Int, to num2: Int, kuchBhi num3: Int) -> Int{
+    return num + num2 + num3
+}
+
+
+// ---------------------------------------------------------------------------------------------------------
+
+
