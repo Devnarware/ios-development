@@ -107,6 +107,20 @@ for num in numbers where num%2 == 0{
 
 // ---------------------------------------------------------------------------------------------------------
 
-// Enum - it is the collections of related values, it is used to define a "type" with a finite number of possible values
+// Enum - it is the collections of related values, it is used to define a "type" with a finite number of possible values, Enum (Enumeration) is a custom type that represents a fixed set of related values.
+// A variable of an enum type can have only one of the predefined values.
 
+enum Phone{
+    case iPhone
+    case samsung
+    case onePlus
+    case realme
+    case nokia
+}
+
+func myPhone(phone: Phone){
+    print("i have a \(phone) phone")
+}
+
+myPhone(phone: .onePlus)
 
