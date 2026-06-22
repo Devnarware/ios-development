@@ -92,18 +92,22 @@ func addThree(num: Int, to num2: Int, kuchBhi num3: Int) -> Int{
 // For Loop
 // loop on array or set or dictionary
 
-var numbers: [Int] = [1,2,3,4,5,6,7,8,9,10]
+var numbers: [Int] = []
+
+for _ in 0..<5{
+    let randomNum = Int.random(in: 1...100)
+    numbers.append(randomNum)
+}
+
+print(numbers)
 
 var sum = 0
-for num in numbers where isEven(num: num){
-    print(num)
+for num in numbers where num%2 == 0{
+        sum += num
 }
 
-func isEven(num: Int) -> Bool{
-    if num%2 == 0 {
-        return true
-    }
-    
-    return false
-}
- 
+// ---------------------------------------------------------------------------------------------------------
+
+
+
+
