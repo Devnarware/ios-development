@@ -19,7 +19,7 @@ var myName: String = "Dev" // specify the type
 // different type of print statement 
 
 print("Hello my name is:", myName)
-print("hello \(myName) is here") // just like the just like the `${}` in js
+print("hello \(myName) is here") // just like the just like the `${}`(Template literals) in js
 
 
 // ---------------------------------------------------------------------------------------------------------
@@ -99,7 +99,6 @@ for _ in 0..<5{
     numbers.append(randomNum)
 }
 
-print(numbers)
 
 var sum = 0
 for num in numbers where num%2 == 0{
@@ -108,6 +107,6 @@ for num in numbers where num%2 == 0{
 
 // ---------------------------------------------------------------------------------------------------------
 
-
+// Enum - it is the collections of related values, it is used to define a "type" with a finite number of possible values
 
 
