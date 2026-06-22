@@ -100,7 +100,7 @@ for num in numbers where isEven(num: num){
 }
 
 func isEven(num: Int) -> Bool{
-    if num/2 == 0 && num > 1{
+    if num%2 == 0 {
         return true
     }
     
