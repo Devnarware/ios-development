@@ -12,39 +12,54 @@ struct ContentView: View {
         
         ZStack{
             
+            
             Image("background-plain")
                 .resizable()
                 .ignoresSafeArea()
             
             VStack {
+                
+                Spacer()
                 Image("logo")
                 
+                Spacer()
                 HStack{
+                    Spacer()
                     Image("card2")
                     Spacer()
                     Image("card3")
+                    Spacer()
                 }
-                .padding(40)
+                
+                Spacer()
+                
                 
                 Image("button")
+                Spacer()
                 
-                HStack (spacing: 80){
-                    VStack (spacing: 20){
+                HStack {
+                    Spacer()
+                    VStack {
                         Text("Player")
-                            .bold()
+                            .font(.headline)
+                            .padding()
                         Text("0")
                             .font(.largeTitle)
                     }
-
-                    VStack (spacing: 20){
+                    Spacer()
+                    VStack {
                         Text("CPU")
-                            .bold()
+                            .font(.headline)
+                            .padding()
                         Text("0")
                             .font(.largeTitle)
                     }
+                    Spacer()
                 }
                 .foregroundStyle(.white)
-                .padding(30)
+                
+                Spacer()
+                
             }
             .padding()
             
