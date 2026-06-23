@@ -23,12 +23,18 @@ struct ContentView: View {
                     
                 Spacer()
                 
-                    Image(systemName: "star.fill")
-                    Image(systemName: "star.fill")
-                    Image(systemName: "star.fill")
-                    Image(systemName: "star.fill")
-                    Image(systemName: "star.leadinghalf.filled")
-                
+                    VStack{
+                        HStack{
+                            Image(systemName: "star.fill")
+                            Image(systemName: "star.fill")
+                            Image(systemName: "star.fill")
+                            Image(systemName: "star.fill")
+                            Image(systemName: "star.leadinghalf.filled")
+                        }
+                        Text("(Reviews 361)")
+                    }
+                    .foregroundColor(.orange)
+                    .font(.caption)
             }
             .padding(.leading, 8)
             .padding(.trailing, 8)
