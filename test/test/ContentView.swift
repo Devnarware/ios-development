@@ -14,7 +14,7 @@ struct ContentView: View {
             Image("img")
                 .resizable()
                 .scaledToFit()
-                .cornerRadius(30)
+                .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
             
             HStack{
                 Text("Indus Valley")
@@ -53,6 +53,13 @@ struct ContentView: View {
             .padding(.trailing, 8)
         }
         .padding()
+        .background(){
+            Rectangle()
+                .foregroundStyle(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+                .shadow(radius: 20)
+        }
+        .padding(10)
     }
 }
 
