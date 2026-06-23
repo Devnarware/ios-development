@@ -10,57 +10,62 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
        
-        VStack (alignment: .leading, spacing: 10){
-            Image("img")
-                .resizable()
-                .scaledToFit()
-                .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+        ZStack{
+            Color(.mint)
+                .ignoresSafeArea()
             
-            HStack{
-                Text("Indus Valley")
-                    .font(.title)
-                    .bold()
-                    
-                Spacer()
+            VStack (alignment: .leading, spacing: 10){
+                Image("img")
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
                 
-                    VStack{
-                        HStack{
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.fill")
-                            Image(systemName: "star.leadinghalf.filled")
+                HStack{
+                    Text("Indus Valley")
+                        .font(.title)
+                        .bold()
+                        
+                    Spacer()
+                    
+                        VStack{
+                            HStack{
+                                Image(systemName: "star.fill")
+                                Image(systemName: "star.fill")
+                                Image(systemName: "star.fill")
+                                Image(systemName: "star.fill")
+                                Image(systemName: "star.leadinghalf.filled")
+                            }
+                            Text("(Reviews 361)")
                         }
-                        Text("(Reviews 361)")
-                    }
-                    .foregroundColor(.orange)
-                    .font(.caption)
-            }
-            .padding(.leading, 8)
-            .padding(.trailing, 8)
-            
-            
-            Text("Must place to vist at least once in life")
+                        .foregroundColor(.orange)
+                        .font(.caption)
+                }
                 .padding(.leading, 8)
-            
-            HStack{
-                Spacer()
-                Image(systemName: "fork.knife")
-                Image(systemName: "binoculars.fill")
+                .padding(.trailing, 8)
+                
+                
+                Text("Must place to visit at least once in life")
+                    .padding(.leading, 8)
+                
+                HStack{
+                    Spacer()
+                    Image(systemName: "fork.knife")
+                    Image(systemName: "binoculars.fill")
+                }
+                .foregroundStyle(.gray)
+                .font(.caption)
+                .padding(.trailing, 8)
             }
-            .foregroundStyle(.gray)
-            .font(.caption)
-            .padding(.trailing, 8)
+            .padding()
+            .background(){
+                Rectangle()
+                    .foregroundStyle(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+                    .shadow(radius: 15)
+            }
+            .padding(10)
         }
-        .padding()
-        .background(){
-            Rectangle()
-                .foregroundStyle(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-                .shadow(radius: 20)
         }
-        .padding(10)
-    }
 }
 
 #Preview {
