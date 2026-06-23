@@ -61,7 +61,9 @@ struct ContentView: View {
                 Rectangle()
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-                    .shadow(radius: 15)
+                    .shadow(color: .black.opacity(0.8), radius: 15,
+                            x: 0,
+                            y: 10)
             }
             .padding(10)
         }
