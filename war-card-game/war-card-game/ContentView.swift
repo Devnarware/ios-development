@@ -14,15 +14,17 @@ struct ContentView: View {
             
             
             Image("background-plain")
-//                 .resizable()
-//                 .ignoresSafeArea()
+            // the main image in the background
             
             VStack {
                 
                 Spacer()
+                
                 Image("logo")
+                // logo image
                 
                 Spacer()
+                
                 HStack{
                     Spacer()
                     Image("card2")
@@ -30,15 +32,17 @@ struct ContentView: View {
                     Image("card3")
                     Spacer()
                 }
+                // holding the cards
                 
                 Spacer()
                 
-
                 Button{
                 }
                 label: {
                     Image("button")
                 }
+                // deal button
+                
                 Spacer()
                 
                 HStack {
@@ -61,6 +65,7 @@ struct ContentView: View {
                     Spacer()
                 }
                 .foregroundStyle(.white)
+                // holding the score detalis
                 
                 Spacer()
                 
