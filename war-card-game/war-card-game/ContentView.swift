@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var playerCard = "card12"
+    @State var cpuCard = "card10"
+    // variables for cards
+    
+    @State var playerScore = 0
+    @State var cpuScore = 0
+    // variables for score
+    
     var body: some View {
-        
-        var playerCard = "card12"
-        var cpuCard = "card10"
-        // variables for cards
-        
-        var playerScore = 0
-        var cpuScore = 0
-        // variables for score
         
         ZStack{
             
@@ -45,6 +46,7 @@ struct ContentView: View {
                 Spacer()
                 
                 Button{
+                    dealCards()
                 }
                 label: {
                     Image("button")
@@ -81,6 +83,27 @@ struct ContentView: View {
             .padding()
             
             
+        }
+        
+    }
+    
+    func dealCards(){
+       // generatre random value
+        var playerValue = Int.random(in: 2...14)
+        var cpuValue = Int.random(in: 2...14)
+        
+      // update the cards
+        playerCard = "card\(playerValue)"
+        cpuCard = "card\(cpuValue)"
+        
+      // update the score
+        if playerValue > cpuValue{
+            playerScore += 1
+        }else if cpuValue > playerValue{
+            cpuScore += 1
+        }else{
+            playerScore += 1
+            cpuScore += 1
         }
         
     }
