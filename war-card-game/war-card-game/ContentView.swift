@@ -33,8 +33,12 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                
-                Image("button")
+
+                Button{
+                }
+                label: {
+                    Image("button")
+                }
                 Spacer()
                 
                 HStack {
