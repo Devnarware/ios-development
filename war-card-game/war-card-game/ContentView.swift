@@ -14,8 +14,8 @@ struct ContentView: View {
             
             
             Image("background-plain")
-                .resizable()
-                .ignoresSafeArea()
+//                 .resizable()
+//                 .ignoresSafeArea()
             
             VStack {
                 
