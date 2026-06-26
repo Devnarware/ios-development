@@ -9,13 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var enteredValue: String = "0"
+    
     var body: some View {
         
-        var arr: [[String]] = [
+        let arr: [[String]] = [
             
-            ["7", "8", "9", "+"],
+            ["del", "AC", "%", "÷"],
+            ["7", "8", "9", "x"],
             ["4", "5", "6", "-"],
-            ["1", "2", "3", "/"]
+            ["1", "2", "3", "+"],
+            ["+/-", "0", "•", "="]
         ]
         
         ZStack{
@@ -29,25 +33,24 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    Text("0")
+                    Text(enteredValue)
                         .foregroundStyle(.white)
                         .font(.largeTitle)
                         .padding()
                 }
                 // this is the output area
-                Spacer()
                 VStack{
                     
                     ForEach(arr, id: \.self){ row in
                         HStack{
                             ForEach(row, id: \.self){ col in
                                 Button{
-                                    
+                                    didTap(String: col)
                                 }label: {
                                     Text(col)
                                         .font(.system(size: 32))
                                         .frame(width: 70, height: 70)
-                                        .background(Color.orange)
+                                        .background(Color.gray)
                                         .foregroundColor(.white)
                                         .cornerRadius(35)
                                 }
@@ -58,6 +61,10 @@ struct ContentView: View {
                 }
             }
         }
+    }
+    
+    func didTap(String: click){
+        
     }
 }
 
