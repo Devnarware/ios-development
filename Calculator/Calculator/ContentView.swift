@@ -22,26 +22,39 @@ struct ContentView: View {
             Color(.black)
                 .ignoresSafeArea()
             
-            HStack{
-                
-                Spacer()
-                
-                Text("0")
-                    .foregroundStyle(.white)
-                    .font(.largeTitle)
-                    .padding()
-            }
-            // this is the output area
-            
             VStack{
                 
-                for row in arr{
+                Spacer()
+                HStack{
                     
-                    HStack{
-                        for col in row{
-                            
+                    Spacer()
+                    
+                    Text("0")
+                        .foregroundStyle(.white)
+                        .font(.largeTitle)
+                        .padding()
+                }
+                // this is the output area
+                Spacer()
+                VStack{
+                    
+                    ForEach(arr, id: \.self){ row in
+                        HStack{
+                            ForEach(row, id: \.self){ col in
+                                Button{
+                                    
+                                }label: {
+                                    Text(col)
+                                        .font(.system(size: 32))
+                                        .frame(width: 70, height: 70)
+                                        .background(Color.orange)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(35)
+                                }
+                            }
                         }
                     }
+                    
                 }
             }
         }
