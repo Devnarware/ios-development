@@ -126,38 +126,45 @@ struct ContentView: View {
             }
         }
         
-        
-        print("Entered value \(enteredValue)")
-        print("FirstNum \(firstNum)")
-        print("SecondNum \(secondNum)")
-        print("Symbol \(symbol)")
-        print("isFirst \(isFirstNum)")
-        print("isSymbol \(isSymbol)")
-        print("-------------------------------------------------")
-        
+//        
+//        print("Entered value \(enteredValue)")
+//        print("FirstNum \(firstNum)")
+//        print("SecondNum \(secondNum)")
+//        print("Symbol \(symbol)")
+//        print("isFirst \(isFirstNum)")
+//        print("isSymbol \(isSymbol)")
+//        print("-------------------------------------------------")
+//        
     }
     
     func calculate(firstNum: String, secondNum: String, symbol: String) -> String {
         
         let a = Double(firstNum) ?? 0
         let b = Double(secondNum) ?? 0
+        var ans:Double = 0
         
         switch symbol{
         case "+":
-            return("\(a+b)")
+            ans = a+b
         case "-":
-            return("\(a-b)")
+            ans = a-b
         case "x":
-            return("\(a*b)")
+            ans = a*b
         case "÷":
             if b == 0{
                 return "Error"
             }else{
-                return ("\(a/b)")
+                ans = a/b
             }
             
         default:
-            return ("0")
+            ans = 0
+        }
+        
+        if ans.truncatingRemainder(dividingBy: 1) == 0 {
+            return "\(Int(ans))"
+        }else{
+            return "\(ans)"
         }
     }
     
