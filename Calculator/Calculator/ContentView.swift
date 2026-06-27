@@ -45,7 +45,7 @@ struct ContentView: View {
                         HStack{
                             ForEach(row, id: \.self){ col in
                                 Button{
-                                    didTap(String: col)
+                                    didTap(click: col)
                                 }label: {
                                     Text(col)
                                         .font(.system(size: 32))
@@ -63,8 +63,8 @@ struct ContentView: View {
         }
     }
     
-    func didTap(String: click){
-        
+    func didTap(click: String){
+        enteredValue += click
     }
 }
 
