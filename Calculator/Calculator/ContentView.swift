@@ -74,8 +74,10 @@ struct ContentView: View {
         case "del":
             if enteredValue.count > 1{
                 enteredValue.removeLast()
-                if !flag{
+                if !flag && !secondNum.isEmpty{
                     secondNum.removeLast()
+                }else{
+                    firstNum.removeLast()
                 }
             }else{
                 enteredValue = "0"
@@ -136,11 +138,11 @@ struct ContentView: View {
     }
     
     func resetCalc(){
-        enteredValue = "0"
-        flag = true
         firstNum = ""
         secondNum = ""
         symbol = ""
+        flag = true
+        enteredValue = "0"
     }
 }
 
