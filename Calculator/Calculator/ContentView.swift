@@ -10,6 +10,10 @@ import SwiftUI
 struct ContentView: View {
     
     @State var enteredValue: String = "0"
+    @State var firstNum: String = ""
+    @State var SecondNum: String = ""
+    @State var symbol: String = ""
+    @State var flag: Bool = true
     
     var body: some View {
         
@@ -67,23 +71,56 @@ struct ContentView: View {
         switch click{
         case "AC":
             enteredValue = "0"
+            flag = true
+            firstNum = ""
+            SecondNum = ""
+            symbol = ""
         case "del":
             if enteredValue.count > 1{
                 enteredValue.removeLast()
+                if !flag{
+                    SecondNum.removeLast()
+                }
             }else{
                 enteredValue = "0"
             }
-//        case "=" :
+        case "=" :
+            calculate(firstNum: <#T##String#>, secondNum: <#T##String#>, symbol: <#T##String#>)
+            enteredValue = "0"
+            
 //        case "+/-" :
 //        case "%" :
-//        case "÷" :
-//        case "+", "-", "x" :
+
+        case "+", "-", "x", "÷" :
+            symbol = click
+            enteredValue += click
+            flag = false
+            
         default :
             if enteredValue == "0"{
                 enteredValue = click
             }else{
                 enteredValue += click
+                if flag{
+                    firstNum = enteredValue
+                }
+                else{
+                    SecondNum += click
+                }
             }
+        }
+        
+        func calculate(firstNum: String, secondNum: String, symbol: String) -> String {
+            
+            var a = Int(firstNum)
+            var b = Int(secondNum)
+            
+            switch symbol{
+                case "+":
+                print(a, b)
+            }
+            
+            return ""
         }
     }
 }
