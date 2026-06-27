@@ -110,31 +110,33 @@ struct ContentView: View {
             }
         }
         
-        func calculate(firstNum: String, secondNum: String, symbol: String) -> String {
-            
-            let a = Int(firstNum) ?? 0
-            let b = Int(secondNum) ?? 0
-            
-            switch symbol{
-            case "+":
-                return("\(a+b)")
-            case "-":
-                return("\(a-b)")
-            case "x":
-                return("\(a*b)")
-            case "÷":
-                if b == 0{
-                    return "Error"
-                }else{
-                    return ("\(a/b)")
-                }
-                
-            default:
-                print(symbol)
+        
+    }
+    
+    func calculate(firstNum: String, secondNum: String, symbol: String) -> String {
+        
+        let a = Int(firstNum) ?? 0
+        let b = Int(secondNum) ?? 0
+        
+        switch symbol{
+        case "+":
+            return("\(a+b)")
+        case "-":
+            return("\(a-b)")
+        case "x":
+            return("\(a*b)")
+        case "÷":
+            if b == 0{
+                return "Error"
+            }else{
+                return ("\(a/b)")
             }
             
-            return ""
+        default:
+            print(symbol)
         }
+        
+        return ""
     }
 }
 
