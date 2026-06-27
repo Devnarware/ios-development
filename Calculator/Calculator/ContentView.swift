@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State var enteredValue: String = "0"
-    @State var firstNum: String = "0"
-    @State var secondNum: String = "0"
+    @State var firstNum: String = ""
+    @State var secondNum: String = ""
     @State var symbol: String = ""
     @State var flag: Bool = true
     
@@ -70,11 +70,7 @@ struct ContentView: View {
     func didTap(click: String){
         switch click{
         case "AC":
-            enteredValue = "0"
-            flag = true
-            firstNum = ""
-            secondNum = ""
-            symbol = ""
+            resetCalc()
         case "del":
             if enteredValue.count > 1{
                 enteredValue.removeLast()
@@ -137,6 +133,14 @@ struct ContentView: View {
         }
         
         return ""
+    }
+    
+    func resetCalc(){
+        enteredValue = "0"
+        flag = true
+        firstNum = ""
+        secondNum = ""
+        symbol = ""
     }
 }
 
