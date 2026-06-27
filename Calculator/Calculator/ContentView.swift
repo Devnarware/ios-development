@@ -13,7 +13,8 @@ struct ContentView: View {
     @State var firstNum: String = ""
     @State var secondNum: String = ""
     @State var symbol: String = ""
-    @State var flag: Bool = true
+    @State var isFirstNum: Bool = true
+    @State var isSymbol: Bool = false
     
     var body: some View {
         
@@ -68,16 +69,27 @@ struct ContentView: View {
     }
     
     func didTap(click: String){
+        
+        print("Entered value \(enteredValue)")
+        print("FirstNum \(firstNum)")
+        print("SecondNum \(secondNum)")
+        print("Symbol \(symbol)")
+        print("isFirst \(isFirstNum)")
+        print("isSymbol \(isSymbol)")
+        
         switch click{
         case "AC":
             resetCalc()
         case "del":
             if enteredValue.count > 1{
                 enteredValue.removeLast()
-                if !flag && !secondNum.isEmpty{
-                    secondNum.removeLast()
-                }else{
-                    firstNum.removeLast()
+                isSymbol = false
+                if !isSymbol{
+                    if !isFirstNum && !secondNum.isEmpty{
+                        secondNum.removeLast()
+                    }else{
+                        firstNum.removeLast()
+                    }
                 }
             }else{
                 enteredValue = "0"
@@ -92,14 +104,16 @@ struct ContentView: View {
         case "+", "-", "x", "÷" :
             symbol = click
             enteredValue += click
-            flag = false
+            isFirstNum = false
+            isSymbol = true
             
         default :
+            isSymbol = false
             if enteredValue == "0"{
                 enteredValue = click
             }else{
                 enteredValue += click
-                if flag{
+                if isFirstNum{
                     firstNum = enteredValue
                 }
                 else{
@@ -141,7 +155,7 @@ struct ContentView: View {
         firstNum = ""
         secondNum = ""
         symbol = ""
-        flag = true
+        isFirstNum = true
         enteredValue = "0"
     }
 }
