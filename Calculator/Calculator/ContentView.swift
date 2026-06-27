@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State var enteredValue: String = "0"
-    @State var firstNum: String = ""
-    @State var SecondNum: String = ""
+    @State var firstNum: String = "0"
+    @State var secondNum: String = "0"
     @State var symbol: String = ""
     @State var flag: Bool = true
     
@@ -73,20 +73,20 @@ struct ContentView: View {
             enteredValue = "0"
             flag = true
             firstNum = ""
-            SecondNum = ""
+            secondNum = ""
             symbol = ""
         case "del":
             if enteredValue.count > 1{
                 enteredValue.removeLast()
                 if !flag{
-                    SecondNum.removeLast()
+                    secondNum.removeLast()
                 }
             }else{
                 enteredValue = "0"
             }
         case "=" :
-            calculate(firstNum: <#T##String#>, secondNum: <#T##String#>, symbol: <#T##String#>)
-            enteredValue = "0"
+            enteredValue = calculate(firstNum: firstNum, secondNum: secondNum, symbol: symbol)
+           
             
 //        case "+/-" :
 //        case "%" :
@@ -105,19 +105,32 @@ struct ContentView: View {
                     firstNum = enteredValue
                 }
                 else{
-                    SecondNum += click
+                    secondNum += click
                 }
             }
         }
         
         func calculate(firstNum: String, secondNum: String, symbol: String) -> String {
             
-            var a = Int(firstNum)
-            var b = Int(secondNum)
+            let a = Int(firstNum) ?? 0
+            let b = Int(secondNum) ?? 0
             
             switch symbol{
-                case "+":
-                print(a, b)
+            case "+":
+                return("\(a+b)")
+            case "-":
+                return("\(a-b)")
+            case "x":
+                return("\(a*b)")
+            case "÷":
+                if b == 0{
+                    return "Error"
+                }else{
+                    return ("\(a/b)")
+                }
+                
+            default:
+                print(symbol)
             }
             
             return ""
