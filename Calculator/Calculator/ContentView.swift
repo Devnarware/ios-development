@@ -24,7 +24,7 @@ struct ContentView: View {
             ["7", "8", "9", "x"],
             ["4", "5", "6", "-"],
             ["1", "2", "3", "+"],
-            ["+/-", "0", "•", "="]
+            ["+/-", "0", ".", "="]
         ]
         
         ZStack{
@@ -70,29 +70,29 @@ struct ContentView: View {
     
     func didTap(click: String){
         
-        print("Entered value \(enteredValue)")
-        print("FirstNum \(firstNum)")
-        print("SecondNum \(secondNum)")
-        print("Symbol \(symbol)")
-        print("isFirst \(isFirstNum)")
-        print("isSymbol \(isSymbol)")
-        
         switch click{
         case "AC":
             resetCalc()
         case "del":
             if enteredValue.count > 1{
                 enteredValue.removeLast()
-                isSymbol = false
                 if !isSymbol{
-                    if !isFirstNum && !secondNum.isEmpty{
+                    if !isFirstNum && secondNum.count > 1{
                         secondNum.removeLast()
-                    }else{
+                    }else if isFirstNum{
                         firstNum.removeLast()
+                    }else{
+                        isSymbol = true
+                        secondNum.removeLast()
                     }
+                }else{
+                    isSymbol = false
+                    isFirstNum = true
                 }
             }else{
                 enteredValue = "0"
+                firstNum = "0"
+                secondNum = "0"
             }
         case "=" :
             enteredValue = calculate(firstNum: firstNum, secondNum: secondNum, symbol: symbol)
@@ -103,7 +103,11 @@ struct ContentView: View {
 
         case "+", "-", "x", "÷" :
             symbol = click
-            enteredValue += click
+            
+            if isSymbol{
+                enteredValue.removeLast()
+            }
+            enteredValue += symbol
             isFirstNum = false
             isSymbol = true
             
@@ -123,12 +127,20 @@ struct ContentView: View {
         }
         
         
+        print("Entered value \(enteredValue)")
+        print("FirstNum \(firstNum)")
+        print("SecondNum \(secondNum)")
+        print("Symbol \(symbol)")
+        print("isFirst \(isFirstNum)")
+        print("isSymbol \(isSymbol)")
+        print("-------------------------------------------------")
+        
     }
     
     func calculate(firstNum: String, secondNum: String, symbol: String) -> String {
         
-        let a = Int(firstNum) ?? 0
-        let b = Int(secondNum) ?? 0
+        let a = Double(firstNum) ?? 0
+        let b = Double(secondNum) ?? 0
         
         switch symbol{
         case "+":
@@ -145,10 +157,8 @@ struct ContentView: View {
             }
             
         default:
-            print(symbol)
+            return ("0")
         }
-        
-        return ""
     }
     
     func resetCalc(){
