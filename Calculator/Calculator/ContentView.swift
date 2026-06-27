@@ -16,16 +16,18 @@ struct ContentView: View {
     @State var isFirstNum: Bool = true
     @State var isSymbol: Bool = false
     
+    
+    let arr: [[String]] = [
+        
+        ["del", "AC", "%", "÷"],
+        ["7", "8", "9", "x"],
+        ["4", "5", "6", "-"],
+        ["1", "2", "3", "+"],
+        ["+/-", "0", ".", "="]
+    ]
+    
     var body: some View {
         
-        let arr: [[String]] = [
-            
-            ["del", "AC", "%", "÷"],
-            ["7", "8", "9", "x"],
-            ["4", "5", "6", "-"],
-            ["1", "2", "3", "+"],
-            ["+/-", "0", ".", "="]
-        ]
         
         ZStack{
             Color(.black)
