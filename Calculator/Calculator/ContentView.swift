@@ -64,7 +64,23 @@ struct ContentView: View {
     }
     
     func didTap(click: String){
-        enteredValue += click
+        switch click{
+        case "AC":
+            enteredValue = "0"
+        case "del":
+            enteredValue.removeLast(1)
+//        case "=" :
+//        case "+/-" :
+//        case "%" :
+//        case "÷" :
+//        case "+", "-", "x" :
+        default :
+            if enteredValue == "0"{
+                enteredValue = click
+            }else{
+                enteredValue += click
+            }
+        }
     }
 }
 
