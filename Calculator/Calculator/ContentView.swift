@@ -68,7 +68,11 @@ struct ContentView: View {
         case "AC":
             enteredValue = "0"
         case "del":
-            enteredValue.removeLast(1)
+            if enteredValue.count > 1{
+                enteredValue.removeLast()
+            }else{
+                enteredValue = "0"
+            }
 //        case "=" :
 //        case "+/-" :
 //        case "%" :
