@@ -102,7 +102,21 @@ struct ContentView: View {
             
 //        case "+/-" :
 //        case "%" :
-
+        case "." :
+            
+            if isFirstNum && !firstNum.contains(".") {
+                enteredValue += "."
+                firstNum += "."
+            }else if !secondNum.contains(".") && !isFirstNum{
+                if secondNum.isEmpty{
+                    secondNum += "0."
+                    enteredValue += "0."
+                }else{
+                    secondNum += "."
+                    enteredValue += "."
+                }
+            }
+            
         case "+", "-", "x", "÷" :
             symbol = click
             
@@ -117,6 +131,7 @@ struct ContentView: View {
             isSymbol = false
             if enteredValue == "0"{
                 enteredValue = click
+                firstNum = click
             }else{
                 enteredValue += click
                 if isFirstNum{
@@ -129,13 +144,13 @@ struct ContentView: View {
         }
         
 //        
-//        print("Entered value \(enteredValue)")
-//        print("FirstNum \(firstNum)")
-//        print("SecondNum \(secondNum)")
-//        print("Symbol \(symbol)")
-//        print("isFirst \(isFirstNum)")
-//        print("isSymbol \(isSymbol)")
-//        print("-------------------------------------------------")
+        print("Entered value \(enteredValue)")
+        print("FirstNum \(firstNum)")
+        print("SecondNum \(secondNum)")
+        print("Symbol \(symbol)")
+        print("isFirst \(isFirstNum)")
+        print("isSymbol \(isSymbol)")
+        print("-------------------------------------------------")
 //        
     }
     
@@ -166,7 +181,7 @@ struct ContentView: View {
         if ans.truncatingRemainder(dividingBy: 1) == 0 {
             return "\(Int(ans))"
         }else{
-            return "\(ans)"
+            return String(format: "%.10g", ans)
         }
     }
     
