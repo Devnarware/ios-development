@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var symbol: String = ""
     @State var isFirstNum: Bool = true
     @State var isSymbol: Bool = false
+    @State var didPressEqual: Bool = false
     
     
     let arr: [[String]] = [
@@ -92,12 +93,11 @@ struct ContentView: View {
                     isFirstNum = true
                 }
             }else{
-                enteredValue = "0"
-                firstNum = "0"
-                secondNum = "0"
+                resetCalc()
             }
         case "=" :
             enteredValue = calculate(firstNum: firstNum, secondNum: secondNum, symbol: symbol)
+            didPressEqual = true
            
             
 //        case "+/-" :
@@ -128,6 +128,10 @@ struct ContentView: View {
             isSymbol = true
             
         default :
+            
+            if didPressEqual{
+                resetCalc()
+            }
             isSymbol = false
             if enteredValue == "0"{
                 enteredValue = click
@@ -175,7 +179,7 @@ struct ContentView: View {
             }
             
         default:
-            ans = 0
+            ans = a+b
         }
         
         if ans.truncatingRemainder(dividingBy: 1) == 0 {
@@ -190,6 +194,8 @@ struct ContentView: View {
         secondNum = ""
         symbol = ""
         isFirstNum = true
+        isSymbol = false
+        didPressEqual = false
         enteredValue = "0"
     }
 }
