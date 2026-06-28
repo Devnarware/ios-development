@@ -16,7 +16,6 @@ struct ContentView: View {
     @State var isFirstNum: Bool = true
     @State var isSymbol: Bool = false
     @State var didPressEqual: Bool = false
-    @State var isPositive: Bool = true
     
     
     let arr: [[String]] = [
@@ -77,55 +76,24 @@ struct ContentView: View {
         switch click{
         case "AC":
             resetCalc()
+            
+            
         case "⌫":
-            if enteredValue.count > 1{
-                enteredValue.removeLast()
-                if !isSymbol{
-                    if !isFirstNum && secondNum.count > 1{
-                        secondNum.removeLast()
-                    }else if isFirstNum{
-                        firstNum.removeLast()
-                    }else{
-                        isSymbol = true
-                        secondNum.removeLast()
-                    }
-                }else{
-                    isSymbol = false
-                    isFirstNum = true
-                }
-            }else{
-                resetCalc()
-            }
+            pressDel()
+            
+            
         case "=" :
             enteredValue = calculate(firstNum: firstNum, secondNum: secondNum, symbol: symbol)
             didPressEqual = true
            
             
         case "+/-" :
+            pressPosNeg()
             
-            if enteredValue != "0"{
-                if isPositive && isFirstNum{
-                    firstNum = "(" + "-" + firstNum + ")"
-                    enteredValue = "\(firstNum)"
-                    isPositive = false
-                }else if !isPositive && isFirstNum{
-                    firstNum = firstNum.replacingOccurrences(of: "-", with: "")
-                    firstNum = firstNum.replacingOccurrences(of: "(", with: "")
-                    firstNum = firstNum.replacingOccurrences(of: ")", with: "")
-                    enteredValue = firstNum
-                    isPositive = true
-                }else if !isFirstNum && isPositive && !isSymbol{
-                    secondNum = "-" + secondNum
-                    enteredValue = "\(firstNum)\(symbol)(\(secondNum))"
-                    isPositive = false
-                }else if !isFirstNum && !isPositive && !isSymbol{
-                    secondNum = secondNum.replacingOccurrences(of: "-", with: "")
-                    enteredValue = "\(firstNum)\(symbol)\(secondNum)"
-                    isPositive = true
-                }
-                
-            }
+            
 //        case "%" :
+//            firstNum
+            
         case "." :
             
             if isFirstNum && !firstNum.contains(".") {
@@ -141,7 +109,7 @@ struct ContentView: View {
                 }
             }
             
-        case "+", "-", "x", "÷" :
+        case "+", "-", "x", "÷", "%":
             symbol = click
             
             if isSymbol{
@@ -150,7 +118,6 @@ struct ContentView: View {
             enteredValue += symbol
             isFirstNum = false
             isSymbol = true
-            isPositive = true
             
         default :
             
@@ -173,13 +140,13 @@ struct ContentView: View {
         }
         
 //        
-//        print("Entered value \(enteredValue)")
-//        print("FirstNum \(firstNum)")
-//        print("SecondNum \(secondNum)")
-//        print("Symbol \(symbol)")
-//        print("isFirst \(isFirstNum)")
-//        print("isSymbol \(isSymbol)")
-//        print("-------------------------------------------------")
+        print("Entered value \(enteredValue)")
+        print("FirstNum \(firstNum)")
+        print("SecondNum \(secondNum)")
+        print("Symbol \(symbol)")
+        print("isFirst \(isFirstNum)")
+        print("isSymbol \(isSymbol)")
+        print("-------------------------------------------------")
 //        
     }
     
@@ -203,6 +170,13 @@ struct ContentView: View {
                 ans = a/b
             }
             
+        case "%":
+            if b > 0{
+                ans = (a/100) * b
+            }else{
+                ans = (a/100) * 1
+            }
+            
         default:
             ans = a+b
         }
@@ -222,6 +196,50 @@ struct ContentView: View {
         isSymbol = false
         didPressEqual = false
         enteredValue = "0"
+    }
+    
+    func pressDel(){
+        if enteredValue.count > 1{
+            enteredValue.removeLast()
+            if !isSymbol{
+                if !isFirstNum && secondNum.count > 1{
+                    secondNum.removeLast()
+                }else if isFirstNum{
+                    firstNum.removeLast()
+                }else{
+                    isSymbol = true
+                    secondNum.removeLast()
+                }
+            }else{
+                isSymbol = false
+                isFirstNum = true
+            }
+        }else{
+            resetCalc()
+        }
+    }
+    
+    func pressPosNeg(){
+        if enteredValue != "0"{
+                        if isFirstNum{
+                            if !firstNum.contains("-"){
+                                firstNum = "-" + firstNum
+                                enteredValue = "\(firstNum)"
+                            }else{
+                                firstNum = firstNum.replacingOccurrences(of: "-", with: "")
+                                enteredValue = firstNum
+                            }
+                        }else{
+                            if !secondNum.contains("-"){
+                                secondNum = "-" + secondNum
+                                enteredValue = "\(firstNum)\(symbol)\(secondNum)"
+                            }else{
+                                secondNum = secondNum.replacingOccurrences(of: "-", with: "")
+                                enteredValue = "\(firstNum)\(symbol)\(secondNum)"
+
+                            }
+                        }
+                    }
     }
 }
 
