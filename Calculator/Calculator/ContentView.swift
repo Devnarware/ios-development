@@ -16,11 +16,12 @@ struct ContentView: View {
     @State var isFirstNum: Bool = true
     @State var isSymbol: Bool = false
     @State var didPressEqual: Bool = false
+    @State var isPositive: Bool = true
     
     
     let arr: [[String]] = [
         
-        ["del", "AC", "%", "÷"],
+        ["⌫", "AC", "%", "÷"],
         ["7", "8", "9", "x"],
         ["4", "5", "6", "-"],
         ["1", "2", "3", "+"],
@@ -76,7 +77,7 @@ struct ContentView: View {
         switch click{
         case "AC":
             resetCalc()
-        case "del":
+        case "⌫":
             if enteredValue.count > 1{
                 enteredValue.removeLast()
                 if !isSymbol{
@@ -100,7 +101,30 @@ struct ContentView: View {
             didPressEqual = true
            
             
-//        case "+/-" :
+        case "+/-" :
+            
+            if enteredValue != "0"{
+                if isPositive && isFirstNum{
+                    firstNum = "(" + "-" + firstNum + ")"
+                    enteredValue = "\(firstNum)"
+                    isPositive = false
+                }else if !isPositive && isFirstNum{
+                    firstNum = firstNum.replacingOccurrences(of: "-", with: "")
+                    firstNum = firstNum.replacingOccurrences(of: "(", with: "")
+                    firstNum = firstNum.replacingOccurrences(of: ")", with: "")
+                    enteredValue = firstNum
+                    isPositive = true
+                }else if !isFirstNum && isPositive && !isSymbol{
+                    secondNum = "-" + secondNum
+                    enteredValue = "\(firstNum)\(symbol)(\(secondNum))"
+                    isPositive = false
+                }else if !isFirstNum && !isPositive && !isSymbol{
+                    secondNum = secondNum.replacingOccurrences(of: "-", with: "")
+                    enteredValue = "\(firstNum)\(symbol)\(secondNum)"
+                    isPositive = true
+                }
+                
+            }
 //        case "%" :
         case "." :
             
@@ -126,6 +150,7 @@ struct ContentView: View {
             enteredValue += symbol
             isFirstNum = false
             isSymbol = true
+            isPositive = true
             
         default :
             
@@ -148,13 +173,13 @@ struct ContentView: View {
         }
         
 //        
-        print("Entered value \(enteredValue)")
-        print("FirstNum \(firstNum)")
-        print("SecondNum \(secondNum)")
-        print("Symbol \(symbol)")
-        print("isFirst \(isFirstNum)")
-        print("isSymbol \(isSymbol)")
-        print("-------------------------------------------------")
+//        print("Entered value \(enteredValue)")
+//        print("FirstNum \(firstNum)")
+//        print("SecondNum \(secondNum)")
+//        print("Symbol \(symbol)")
+//        print("isFirst \(isFirstNum)")
+//        print("isSymbol \(isSymbol)")
+//        print("-------------------------------------------------")
 //        
     }
     
